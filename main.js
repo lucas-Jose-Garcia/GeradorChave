@@ -4,10 +4,13 @@ let mod = (dividendo, divisor) => Math.round(dividendo - (Math.floor(dividendo /
 
 function GerarChave() {
         const inputText = document.getElementById('chaveAcesso');
+        const inputCnpj = document.getElementById('cnpj').value;
+        const manterCnpj = document.getElementById('manterCnpj').checked;
+        console.log(manterCnpj)
         const uf = sortearUf();
         const dataAtual = new Date(); 
         const mes = dataAtual.getMonth();
-        const cnpj = gerarCnpj();
+        const cnpj = inputCnpj != '' ? manterCnpj ? inputCnpj : gerarCnpj() : gerarCnpj();
         const serie = Math.floor(Math.random() * 999) + 1;
         const numero = Math.floor(Math.random() * 999999999) + 1;
         const codNum = Math.floor(Math.random() * 99999999) + 1;
@@ -63,4 +66,11 @@ function gerarCnpj() {
         if (d2 >= 10) d2 = 0;
       
         return `${n1}${n2}${n3}${n4}${n5}${n6}${n7}${n8}${n9}${n10}${n11}${n12}${d1}${d2}`;
+}
+
+
+function CriarCnpj() {
+        const inputCnpj = document.getElementById('cnpj');
+        const cnpj = gerarCnpj();
+        inputCnpj.value =  cnpj
 }

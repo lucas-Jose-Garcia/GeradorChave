@@ -8,7 +8,13 @@
         <link rel="stylesheet" href="./style.css">
 </head>
 <body>
-        <div>
+        <div class="grup_cnpj">
+                <input id="cnpj"/>
+                <input type="checkbox" id="manterCnpj" checked>
+                <label for="manterCnpj">Manter CNPJ</label> 
+                <button onclick="CriarCnpj()">Gerar CNPJ</button>
+        </div>
+        <div class="grup_chave">
                 <input id="chaveAcesso"/>
                 <button onclick="GerarChave()">Gerar e Copiar</button>
         </div>
