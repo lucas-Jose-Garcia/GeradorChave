@@ -11,7 +11,7 @@ function GerarChave() {
         const dataAtual = new Date(); 
         const mes = dataAtual.getMonth();
         const cnpj = inputCnpj != '' ? manterCnpj ? inputCnpj : gerarCnpj() : gerarCnpj();
-        const serie = Math.floor(Math.random() * 999) + 1;
+        const serie = Math.floor(Math.random() * 889) + 1;
         const numero = Math.floor(Math.random() * 999999999) + 1;
         const codNum = Math.floor(Math.random() * 99999999) + 1;
         const chaveSemDv = `${formatar(uf, 2)}23${formatar(mes, 2)}${cnpj}55${formatar(serie, 3)}${formatar(numero, 9)}1${formatar(codNum, 8)}`
