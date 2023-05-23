@@ -74,3 +74,5 @@ function CriarCnpj() {
         const cnpj = gerarCnpj();
         inputCnpj.value =  cnpj
 }
+
+CriarCnpj()
