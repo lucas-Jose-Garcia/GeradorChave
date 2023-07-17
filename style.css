@@ -3,8 +3,8 @@ body, input, button, text {
 }
 
 .margin {
-
-        margin-block: 15px;
+        margin-top: 15px;
+        margin-bottom: 15px;
 }
 
 .grup_numero input{
