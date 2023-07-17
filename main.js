@@ -6,18 +6,24 @@ function GerarChave() {
         const inputText = document.getElementById('chaveAcesso');
         const inputCnpj = document.getElementById('cnpj').value;
         const manterCnpj = document.getElementById('manterCnpj').checked;
+        const inputNumero = document.getElementById('numeroNfe');
+        const valorNumero = inputNumero.value;
+        const labelInfo = document.getElementById('info');
+
         console.log(manterCnpj)
         const uf = sortearUf();
         const dataAtual = new Date(); 
         const mes = dataAtual.getMonth();
         const cnpj = inputCnpj != '' ? manterCnpj ? inputCnpj : gerarCnpj() : gerarCnpj();
         const serie = Math.floor(Math.random() * 889) + 1;
-        const numero = Math.floor(Math.random() * 999999999) + 1;
+        const numero = valorNumero != '' ? valorNumero : Math.floor(Math.random() * 999999999) + 1;
         const codNum = Math.floor(Math.random() * 99999999) + 1;
         const chaveSemDv = `${formatar(uf, 2)}23${formatar(mes, 2)}${cnpj}55${formatar(serie, 3)}${formatar(numero, 9)}1${formatar(codNum, 8)}`
         const chave = chaveSemDv + gerarDv(chaveSemDv);
 
         inputText.value = chave;
+        inputNumero.value = '';
+        labelInfo.innerHTML = valorNumero != '' ? `Chave gerada para o número: ${valorNumero}` : ''
         navigator.clipboard.writeText(chave);
         
 }
@@ -73,4 +79,5 @@ function CriarCnpj() {
         const inputCnpj = document.getElementById('cnpj');
         const cnpj = gerarCnpj();
         inputCnpj.value =  cnpj
+        navigator.clipboard.writeText(cnpj);
 }

@@ -8,16 +8,22 @@
         <link rel="stylesheet" href="./style.css">
 </head>
 <body>
-        <div class="grup_cnpj">
+        <div class="grup_cnpj margin">
+                <label for="cnpj">CNPJ: </label> 
                 <input id="cnpj"/>
                 <input type="checkbox" id="manterCnpj">
-                <label for="manterCnpj">Manter CNPJ</label> 
-                <button onclick="CriarCnpj()">Gerar CNPJ</button>
+                <label for="manterCnpj" >Usar na chave</label> 
+                <button onclick="CriarCnpj()">Gerar CNPJ e Copiar</button>
+        </div>
+        <div class="grup_numero margin">
+                <Label for="numeroNfe">Número NF-e:</Label>
+                <input id="numeroNfe" type="number" onKeyPress="if(this.value.length==9) return false;"/>
         </div>
         <div class="grup_chave">
                 <input id="chaveAcesso"/>
                 <button onclick="GerarChave()">Gerar e Copiar</button>
         </div>
+        <label id="info"></label>
         <script src="./main.js"></script>
 </body>
 </html>
