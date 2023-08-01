@@ -10,24 +10,26 @@
 <body>
         <div class="box">
                 <div class="box_main margin padding">
-                        <div class="grup_cnpj margin">
-                                <div class="campo_cnpj">
-                                        <div>
-                                                <label for="cnpj">CNPJ: </label> 
-                                                <input id="cnpj"/>
+                        <div class="grup_top">
+                                <div class="grup_cnpj margin">
+                                        <div class="campo_cnpj">
+                                                <div class="box_start">
+                                                        <label for="cnpj">CNPJ: </label> 
+                                                        <input id="cnpj"/>
+                                                </div>
+                                                <button id="gerarCnpj" onclick="CriarCnpj()">
+                                                        <img id="refresh" src="./refresh.svg" />
+                                                </button>
                                         </div>
-                                        <button id="gerarCnpj" onclick="CriarCnpj()">
-                                                <img id="refresh" src="./refresh.svg" />
-                                        </button>
+                                        <div class="campo_manterCnpj">
+                                                <input type="checkbox" id="manterCnpj">
+                                                <label for="manterCnpj" >Usar na chave</label>
+                                        </div> 
                                 </div>
-                                <div class="campo_manterCnpj">
-                                        <input type="checkbox" id="manterCnpj">
-                                        <label for="manterCnpj" >Usar na chave</label>
-                                </div> 
-                        </div>
-                        <div class="grup_numero margin">
-                                <Label for="numeroNfe">Número NF-e:</Label>
-                                <input id="numeroNfe" type="number" onKeyPress="if(this.value.length==9) return false;"/>
+                                <div class="grup_numero box_start">
+                                        <Label for="numeroNfe">Número NF-e:</Label>
+                                        <input id="numeroNfe" type="number" onKeyPress="if(this.value.length==9) return false;"/>
+                                </div>
                         </div>
                         <div class="grup_chave margin">
                                 <input id="chaveAcesso" disabled/>
