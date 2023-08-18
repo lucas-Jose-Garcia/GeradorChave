@@ -1,45 +1,67 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Gerador de Chave de NF-e</title>
-        <link rel="stylesheet" href="./style.css">
-</head>
-<body>
-        <div class="box">
-                <div class="box_main margin padding">
-                        <div class="grup_top">
-                                <div class="grup_cnpj margin">
-                                        <div class="campo_cnpj">
-                                                <div class="box_start">
-                                                        <label for="cnpj">CNPJ: </label> 
-                                                        <input id="cnpj"/>
-                                                </div>
-                                                <button id="gerarCnpj" onclick="CriarCnpj()">
-                                                        <img id="refresh" src="./refresh.svg" />
-                                                </button>
-                                        </div>
-                                        <div class="campo_manterCnpj">
-                                                <input type="checkbox" id="manterCnpj">
-                                                <label for="manterCnpj" >Usar na chave</label>
-                                        </div> 
-                                </div>
-                                <div class="grup_numero box_start">
-                                        <Label for="numeroNfe">Número NF-e:</Label>
-                                        <input id="numeroNfe" type="number" onKeyPress="if(this.value.length==9) return false;"/>
-                                </div>
-                        </div>
-                        <div class="grup_chave margin">
-                                <input id="chaveAcesso" disabled/>
-                                <button onclick="GerarChave()">Gerar e Copiar</button>
-                        </div>
-                        <label id="info"></label>
-                </div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gerador de Chave de NF-e</title>
+    <link rel="stylesheet" href="./style.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jsbarcode/3.11.3/JsBarcode.all.min.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="wrapper">
+        <div class="main">
+          <div class="group_cnpj">
+            <div class="campo_cnpj">
+              <div class="input_group">
+                <label for="cnpj">CNPJ:</label>
+                <input id="cnpj" placeholder="xxxxxxxxxxxxxx" />
+              </div>
+              <button id="gerarCnpj" onclick="CriarCnpj()">
+                <img id="refresh" src="./refresh.svg" />
+              </button>
+            </div>
+
+            <div class="campo_manterCnpj">
+              <div class="input_check_group">
+                <input id="manterCnpj" type="checkbox" />
+                <label for="manterCnpj">Usar na chave</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="group_numero">
+            <div class="input_group">
+              <label for="numeroNfe">Número NF-e:</label>
+              <input
+                id="numeroNfe"
+                type="number"
+                max="999999999"
+                placeholder="000000000"
+                onKeyPress="if(this.value.length==9) return false;"
+              />
+            </div>
+          </div>
         </div>
 
+        <div class="group_chave">
+          <div class="campo_chave">
+            <div class="input_group">
+              <input id="chaveAcesso" readonly />
+            </div>
+            <button onclick="GerarChave()">Gerar e Copiar</button>
+          </div>
+        </div>
 
-        <script src="./main.js"></script>
-</body>
+        <div class="content" onclick="downloadSVGAsPNG()">
+          <svg id="barcode"></svg>
+        </div>
+
+        <label id="info"></label>
+      </div>
+    </div>
+
+    <script src="./main.js"></script>
+  </body>
 </html>

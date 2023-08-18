@@ -2,9 +2,10 @@
         margin: 0;
         padding: 0;
         text-decoration: none;
+        -webkit-font-smoothing: antialiased;
 }
 
-body, input, button, text {
+:is(body, input, button, text) {
         font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
@@ -12,122 +13,115 @@ body {
         background-color: #222831;
 }
 
-.box_main {
+.container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin: 4rem 0;
+}
+
+.wrapper {
+        display: flex;
+        flex-direction: column;
         background-color: #393E46;
         border-radius: 4px;
         border: solid 2px #D65A31;
+        padding: 1rem;
+        gap: 1rem;
+}
+
+.main {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 2rem;
 }
 
 label {
-        font-size: 0.80rem;
+        font-size: .8rem;
         color: #EEEEEE;
 }
 
 button {
+        display: flex;
         padding: 8px;
         color: #f4f4f4;
         background-color: #D65A31;
         border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        align-items: center;
+        justify-items: center;
+        text-align: center;
+        /* line-height: 0; */
 }
 
 button:hover {
-        background-color: #c23608;  
+        background-color: #c23608;
 }
 
-#gerarCnpj {
+.input_group {
         display: flex;
-        align-items: center;
-        justify-items: center;
-        height: 32px;
-        width: 32px; 
+        flex: 1;
+        flex-direction: column;
+        gap: .25rem;
 }
 
-#refresh {
-        margin-left: -2px;
-        height: 20px;
-        width: 20px;
-}
-
-.campo_cnpj {
-        display: flex;
-        justify-content: space-between;
-        align-items: flex-end;
-        gap: 6px;
-        margin-bottom: 4px;
-}
-
-input {
+.input_group input {
         padding: 8px;
-        border: none;
+        border-radius: 4px;
+        border: 0;
+}
+
+.input_group input:focus {
         outline: none;
+        box-shadow: 0 0 0 2px #D65A31;
 }
 
-.box {
+.group_cnpj,
+.group_numero,
+.group_chave {
         display: flex;
         flex-direction: column;
+        gap: .25rem;
+}
+
+.group_cnpj {
+        gap: .5rem;
+}
+
+.campo_cnpj,
+.campo_chave {
+        display: flex;
+        align-items: flex-end;
+        gap: .5rem;
+}
+
+#gerarCnpj img {
+        height: 16px;
+}
+
+.input_check_group {
+        display: flex;
+        text-align: center;
         align-items: center;
-        justify-content: center;
-}
-
-.grup_top {
-        display: flex;
-        justify-content: space-between;
-        padding-inline: 26px;
-        align-items: top;
-}
-
-.box_start {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        justify-content: center;
-        gap: 8px;
-
-}
-
-.center {
-        border: solid 2px #000;
-}
-
-.margin {
-        margin-top: 16px;
-        margin-bottom: 16px;
-}
-
-.padding {
-        padding: 16px;
-}
-
-.grup_numero {
-        display: flex;
-        justify-content: flex-start;
-        align-items: flex-start;
-        margin-top: 18px;
-
-}
-
-.grup_numero input{
-        width: 112px;
-}
-
-.grup_chave {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 12px;
-        padding: 8px;
-        background-color: #ffffff;
-}
-
-
-#chaveAcesso {
-        width: 380px;
-        font-size: 0.85rem;
-        background-color: transparent;
-        color: rgb(35, 35, 35);
+        gap: .5rem;
 }
 
 #info {
         font-size: 12px;
 }
 
+
+.content {
+        display: flex;
+        align-items: flex-start;
+        background-color: #fff;
+}
+
+#barcode {
+        display: flex;
+        width: 30rem;
+        cursor: pointer;
+}
