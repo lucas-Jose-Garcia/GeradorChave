@@ -1,6 +1,8 @@
-let create_array = (total, numero) => Array.from(Array(total), () => number_random(numero));
+let create_array = (total, numero) =>
+  Array.from(Array(total), () => number_random(numero));
 let number_random = (number) => Math.round(Math.random() * number);
-let mod = (dividendo, divisor) => Math.round(dividendo - Math.floor(dividendo / divisor) * divisor);
+let mod = (dividendo, divisor) =>
+  Math.round(dividendo - Math.floor(dividendo / divisor) * divisor);
 
 function GerarChave() {
   const inputText = document.getElementById("chaveAcesso");
@@ -14,9 +16,11 @@ function GerarChave() {
   const uf = sortearUf();
   const dataAtual = new Date();
   const mes = dataAtual.getMonth();
-  const cnpj = inputCnpj != "" ? (manterCnpj ? inputCnpj : gerarCnpj()) : gerarCnpj();
+  const cnpj =
+    inputCnpj != "" ? (manterCnpj ? inputCnpj : gerarCnpj()) : gerarCnpj();
   const serie = Math.floor(Math.random() * 889) + 1;
-  const numero = valorNumero != "" ? valorNumero : Math.floor(Math.random() * 999999999) + 1;
+  const numero =
+    valorNumero != "" ? valorNumero : Math.floor(Math.random() * 999999999) + 1;
   const codNum = Math.floor(Math.random() * 99999999) + 1;
   const chaveSemDv = `${formatar(uf, 2)}23${formatar(
     mes,
@@ -29,7 +33,10 @@ function GerarChave() {
 
   inputText.value = chave;
   inputNumero.value = "";
-  labelInfo.innerHTML = valorNumero != "" ? `Chave gerada para o documento de  número: ${valorNumero}` : "";
+  labelInfo.innerHTML =
+    valorNumero != ""
+      ? `Chave gerada para o documento de  número: ${valorNumero}`
+      : "";
   navigator.clipboard.writeText(chave);
 
   JsBarcode("#barcode", chave);
@@ -117,4 +124,34 @@ function CriarCnpj() {
   const cnpj = gerarCnpj();
   inputCnpj.value = cnpj;
   navigator.clipboard.writeText(cnpj);
+}
+
+function downloadSVGAsPNG(e) {
+  const canvas = document.createElement("canvas");
+  const svg = document.querySelector("#barcode");
+  const input_value = document.getElementById("chaveAcesso").value;
+  const base64doc = btoa(svg.outerHTML);
+  const w = parseInt(svg.getAttribute("width"));
+  const h = parseInt(svg.getAttribute("height"));
+  const img_to_download = document.createElement("img");
+  img_to_download.src = "data:image/svg+xml;base64," + base64doc;
+
+  img_to_download.onload = function () {
+    canvas.setAttribute("width", w);
+    canvas.setAttribute("height", h);
+    const context = canvas.getContext("2d");
+    //context.clearRect(0, 0, w, h);
+    context.drawImage(img_to_download, 0, 0, w, h);
+    const dataURL = canvas.toDataURL("image/png");
+    if (window.navigator.msSaveBlob) {
+      window.navigator.msSaveBlob(canvas.msToBlob(), `${input_value}.png`);
+      e.preventDefault();
+    } else {
+      const a = document.createElement("a");
+      const my_evt = new MouseEvent("click");
+      a.download = `${input_value}.png`;
+      a.href = dataURL;
+      a.dispatchEvent(my_evt);
+    }
+  };
 }
