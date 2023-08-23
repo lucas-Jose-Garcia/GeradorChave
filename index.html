@@ -48,9 +48,14 @@
         <div class="group_chave">
           <div class="campo_chave">
             <div class="input_group">
-              <input id="chaveAcesso" readonly />
+              <input id="chaveAcesso" />
             </div>
-            <button onclick="GerarChave()">Gerar e Copiar</button>
+            <button id="gerarChave" onclick="GerarChave()">Gerar e Copiar</button>
+          </div>
+
+          <div class="input_check_group">
+            <input id="pesquisaManual" type="checkbox" />
+            <label for="pesquisaManual">Habilitar pesquisa manual</label>
           </div>
         </div>
 
