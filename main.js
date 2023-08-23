@@ -8,6 +8,8 @@ const manterCnpj = document.getElementById("manterCnpj");
 const pesquisaManualCheckbox = document.getElementById("pesquisaManual");
 
 function updateButtonStatus() {
+  pesquisaManualCheckbox.addEventListener("change", updateButtonStatus);
+
   if (pesquisaManualCheckbox.checked) {
     manterCnpj.disabled = true;
   } else {
@@ -15,9 +17,6 @@ function updateButtonStatus() {
   }
 }
 
-updateButtonStatus();
-
-pesquisaManualCheckbox.addEventListener("change", updateButtonStatus);
 
 function GerarChave() {
   const inputText = document.getElementById("chaveAcesso");
