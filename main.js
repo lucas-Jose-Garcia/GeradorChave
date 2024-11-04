@@ -27,12 +27,13 @@ function GerarChave() {
 
   const uf = sortearUf();
   const dataAtual = new Date();
+  const ano = dataAtual.getFullYear().toString().substr(-2);
   const mes = dataAtual.getMonth();
   const cnpj = inputCnpj != "" ? (manterCnpj.checked ? inputCnpj : gerarCnpj()) : gerarCnpj();
   const serie = Math.floor(Math.random() * 889) + 1;
   const numero = valorNumero != "" ? valorNumero : Math.floor(Math.random() * 999999999) + 1;
   const codNum = Math.floor(Math.random() * 99999999) + 1;
-  const chaveSemDv = `${formatar(uf, 2)}23${formatar(mes, 2)}${cnpj}55${formatar(serie, 3)}${formatar(numero, 9)}1${formatar(
+  const chaveSemDv = `${formatar(uf, 2)}{ano}${formatar(mes, 2)}${cnpj}55${formatar(serie, 3)}${formatar(numero, 9)}1${formatar(
     codNum,
     8
   )}`;
